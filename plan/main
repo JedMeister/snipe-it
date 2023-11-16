@@ -1,15 +1,15 @@
 #include <turnkey/base>
-#include <turnkey/lamp81>
+#include <turnkey/lamp>
 
 python3-bcrypt
 
-php8.1-curl
-//php8.1-json # in php8.1 this is a virtual package
-php8.1-mbstring
-php8.1-gd
-php8.1-ldap
-php8.1-zip
-php8.1-bcmath
-php8.1-xml
+php-curl
+php-json # in sury this is a virtual package
+php-mbstring
+php-gd
+php-ldap
+php-zip
+php-bcmath
+php-xml
 
 unzip
