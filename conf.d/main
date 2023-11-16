@@ -11,17 +11,11 @@ ADMIN_PASS=turnkey1
 ADMIN_FNAME="TurnKey"
 ADMIN_LNAME="Linux"
 
-SRC=/usr/local/src
 WEBROOT=/var/www/snipe-it
 CONF=$WEBROOT/.env
 
 LOC_SHARE=/usr/local/share
 LOC_BIN=/usr/local/bin
-
-# install Snipe-IT
-tar xf $SRC/snipe-it-*.tar.gz -C /var/www
-mv $WEBROOT* $WEBROOT
-rm -f $SRC/snipe-it-*.tar.gz
 
 service mysql start
 
