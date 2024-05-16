@@ -75,6 +75,13 @@ def main():
 
     inithooks_cache.write('APP_DOMAIN', domain)
 
+    if domain.startswith('http://') or domain.startswith('http://'):
+        url = domain
+    else:
+        url = f'https://{domain}'
+    if url.endswith('/'):
+        url - url[:-1]
+
     CONF = '/var/www/snipe-it/.env'
     # read .env lines
     with open(CONF, 'r') as fob:

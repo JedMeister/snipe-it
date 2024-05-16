@@ -23,8 +23,15 @@ mysqladmin create $DB_NAME
 mysql --batch --execute "grant all privileges on $DB_NAME.* to $DB_USER@localhost identified by '$DB_PASS'; flush privileges;"
 
 cd $WEBROOT
+# technically snipe-it doesn't (yet) support PHP8.2 (dur in v7.0)
+# but it seems to work ok?! So forcing for now
+php_req=$(sed -En '\|"php"| s|.*: "(.*)".*|\1|p' composer.json)
+if [[ "$php_req" == *"<8.2" ]]; then
+    sed -i '\|"php"| s|<8.2|<8.3|' composer.json
+fi
 chown -R www-data:www-data $WEBROOT
-echo yes | turnkey-composer install --no-dev --prefer-source
+turnkey-composer update
+turnkey-composer install --no-dev --prefer-source
 tkl-composer-squash-vendor
 
 [[ ! -f "$CONF" ]] && cp $CONF.example $CONF
